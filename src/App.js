@@ -68,7 +68,9 @@ function App() {
   };
   return (
     <Wrapper>
-      {showCopyMessage && <CopyMessage text={hashtag} />}
+      {showCopyMessage && (
+        <CopyMessage text={hashtag && hashtagGenerator(hashtag)} />
+      )}
       <h2>Hashtag Generator</h2>
       <Inputs>
         <Input
