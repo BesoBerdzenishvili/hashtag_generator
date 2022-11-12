@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { styled } from "./stitches.config";
+import CopyBtn from "./components/CopyBtn";
+import CopyMessage from "./components/CopyMessage";
 
 const Wrapper = styled("div", {
   display: "flex",
@@ -29,18 +31,24 @@ const Input = styled("input", {
   color: "$orange",
 });
 
+const Outputs = styled("div", {
+  display: "flex",
+  alignItems: "end",
+});
+
 const Output = styled("div", {
   backgroundColor: "$black",
   maxWidth: 175,
   width: "100%",
   minHeight: 24,
-  marginTop: 24,
+  margin: "24px 4px 0 0",
   overflowWrap: "break-word",
   padding: 3,
 });
 
 function App() {
   const [hashtag, setHashtag] = useState("");
+  const [showCopyMessage, setShowCopyMessage] = useState(false);
   const hashtagGenerator = (text) => {
     if (text.length > 140) {
       alert("Text must less that 140 characters");
@@ -60,6 +68,7 @@ function App() {
   };
   return (
     <Wrapper>
+      {showCopyMessage && <CopyMessage text={hashtag} />}
       <h2>Hashtag Generator</h2>
       <Inputs>
         <Input
@@ -68,7 +77,10 @@ function App() {
           autoFocus
           onChange={(e) => setHashtag(e.target.value)}
         />
-        <Output>{hashtag && hashtagGenerator(hashtag)}</Output>
+        <Outputs>
+          <Output>{hashtag && hashtagGenerator(hashtag)}</Output>
+          <CopyBtn text={hashtag} setShowText={setShowCopyMessage} />
+        </Outputs>
       </Inputs>
     </Wrapper>
   );
