@@ -17,6 +17,10 @@ const Wrapper = styled("div", {
   top: "50%",
   transform: "translate(-50%,-50%)",
   borderRadius: 7,
+  "@bp1": {
+    padding: "0 4px",
+    maxWidth: 310,
+  },
 });
 
 const Inputs = styled("div", {
@@ -29,6 +33,9 @@ const Input = styled("input", {
   backgroundColor: "$black",
   height: 24,
   color: "$orange",
+  "@bp1": {
+    width: 174,
+  },
 });
 
 const Outputs = styled("div", {
@@ -81,7 +88,10 @@ function App() {
         />
         <Outputs>
           <Output>{hashtag && hashtagGenerator(hashtag)}</Output>
-          <CopyBtn text={hashtag} setShowText={setShowCopyMessage} />
+          <CopyBtn
+            text={hashtag && hashtagGenerator(hashtag)}
+            setShowText={setShowCopyMessage}
+          />
         </Outputs>
       </Inputs>
     </Wrapper>

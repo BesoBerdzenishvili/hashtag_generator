@@ -16,6 +16,9 @@ export const {
       black: "#141517",
     },
   },
+  media: {
+    bp1: "(max-width: 600px)",
+  },
 });
 
 export const globalStyles = globalCss({
