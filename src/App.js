@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { styled } from "./stitches.config";
+import { keyframes, styled } from "./stitches.config";
 import CopyBtn from "./components/CopyBtn";
 import CopyMessage from "./components/CopyMessage";
+
+const wrapper = keyframes({
+  from: { opacity: 0, top: "70%" },
+  to: { opacity: 1, top: "50%" },
+});
 
 const Wrapper = styled("div", {
   display: "flex",
@@ -17,6 +22,7 @@ const Wrapper = styled("div", {
   top: "50%",
   transform: "translate(-50%,-50%)",
   borderRadius: 7,
+  animation: `${wrapper} 3s`,
   "@bp1": {
     padding: "0 4px",
     maxWidth: 310,

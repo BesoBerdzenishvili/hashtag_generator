@@ -1,5 +1,10 @@
 import React from "react";
-import { styled } from "../stitches.config";
+import { styled, keyframes } from "../stitches.config";
+
+const wrapper = keyframes({
+  "70%": { opacity: 1 },
+  "100%": { opacity: 0 },
+});
 
 const Wrapper = styled("div", {
   border: "4px solid $orange",
@@ -14,6 +19,7 @@ const Wrapper = styled("div", {
   left: 0,
   textAlign: "center",
   fontSize: "24px",
+  animation: `${wrapper} 2s`,
   "& span": {
     color: "$orange",
   },
